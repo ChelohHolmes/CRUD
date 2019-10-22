@@ -1,0 +1,24 @@
+<h1 mat-dialog-title style="text-align: center">Iniciar Sesión</h1>
+<form [formGroup]="UserLogin" (ngSubmit)="onSubmit()" >
+    <br>
+    <mat-form-field>
+        <label>
+            <input matInput placeholder="Usuario" formControlName="User" [(ngModel)]="user">
+        </label>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <label>
+            <input matInput placeholder="Ingresa tu contraseña" [type]="hide ? 'password' : 'text'" formControlName="Password" [(ngModel)]="password">
+        </label>
+        <mat-icon matSuffix (click)="hide = !hide">
+            {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error>Contraseña invalida</mat-error>
+    </mat-form-field>
+    <br>
+    <div *ngIf="incorrect">
+        <h2>Error al iniciar sesión</h2>
+    </div>
+    <br>
+        <button mat-raised-button type="submit" id="login-button" style="float: right">Log in</button>
+</form>
